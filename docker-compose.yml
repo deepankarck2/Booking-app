@@ -13,7 +13,7 @@ services:
     env_file:
       - .env
     volumes:
-      - "./user_service/mongodb_data:/data/db"
+      - "./backend/user_service/mongodb_data:/data/db"
 
   user-service:
     build: "./backend/user_service"
@@ -26,6 +26,10 @@ services:
       - USER_SERVICE_PORT=${USER_SERVICE_PORT}
       - USER_SERVICE_HOST=${USER_SERVICE_HOST}
       - GATEWAY_HOST=${GATEWAY_HOST}
+      - JWT_ACCESS_TOKEN_SECRET=${JWT_ACCESS_TOKEN_SECRET}
+      - JWT_ACCESS_TOKEN_TIME=${JWT_ACCESS_TOKEN_TIME}
+      - JWT_REFRESH_TOKEN_SECRET=${JWT_REFRESH_TOKEN_SECRET}
+      - JWT_REFRESH_TOKEN_TIME=${JWT_REFRESH_TOKEN_TIME}
     env_file:
       - .env
     ports:

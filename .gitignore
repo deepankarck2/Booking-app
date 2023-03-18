@@ -11,4 +11,4 @@ node_modules
 */node_modules
 
 # user service
-./backend/user_service/
+backend/user_service/mongodb_data
