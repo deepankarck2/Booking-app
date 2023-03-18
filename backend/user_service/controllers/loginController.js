@@ -13,7 +13,7 @@ async function loginController(req, res) {
         const user = await db.findUserByEmail(email);
 
         // user dne
-        if (!user) return res.status(409).send("User already exists");
+        if (!user) return res.status(404).send("User not found");
 
         // check password
         if (!verifyPassword(password, user.password)) return res.status(403).send("Invalid password");
