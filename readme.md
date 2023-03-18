@@ -51,6 +51,12 @@ MONGO_DB_PASSWORD=db-password-here
 USER_SERVICE_PORT=port-number
 USER_SERVICE_HOST=url:port
 GATEWAY_HOST=url:port
+
+# secrets and keys
+JWT_ACCESS_TOKEN_SECRET=secret-key
+JWT_ACCESS_TOKEN_TIME=time
+JWT_REFRESH_TOKEN_SECRET=secret-key
+JWT_REFRESH_TOKEN_TIME=time
 ```
 
 ### Example
@@ -66,5 +72,11 @@ MONGO_DB_PASSWORD=abc123
 USER_SERVICE_PORT=4001
 USER_SERVICE_HOST=http://user-service-container:4001
 GATEWAY_HOST=http://gateway-container:4000
+
+# secrets and keys
+JWT_ACCESS_TOKEN_SECRET=abc123
+JWT_ACCESS_TOKEN_TIME=10s
+JWT_REFRESH_TOKEN_SECRET=xyz123
+JWT_REFRESH_TOKEN_TIME=30s
 ```
 
