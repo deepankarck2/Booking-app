@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  app-db:
+    image: mongo
+    restart: always
+    container_name: app-db-container
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_DB_PASSWORD}
+    ports:
+      - "27017:27017"
+    env_file:
+      - .env
+    volumes:
+      - "./backend/user_service/mongodb_data:/data/db"
+
+  user-service:
+    build: "./backend/user_service"
+    depends_on:
+      - app-db
+    container_name: user-service-container
+    environment:
+      - NODE_ENV=${NODE_ENV}
+      - MONGO_DB_HOST=${MONGO_DB_HOST}
+      - USER_SERVICE_PORT=${USER_SERVICE_PORT}
+      - USER_SERVICE_HOST=${USER_SERVICE_HOST}
+      - GATEWAY_HOST=${GATEWAY_HOST}
+      - JWT_ACCESS_TOKEN_SECRET=${JWT_ACCESS_TOKEN_SECRET}
+      - JWT_ACCESS_TOKEN_TIME=${JWT_ACCESS_TOKEN_TIME}
+      - JWT_REFRESH_TOKEN_SECRET=${JWT_REFRESH_TOKEN_SECRET}
+      - JWT_REFRESH_TOKEN_TIME=${JWT_REFRESH_TOKEN_TIME}
+    env_file:
+      - .env
+    ports:
+      - ${USER_SERVICE_PORT}:${USER_SERVICE_PORT}
+    volumes:
+      - "./backend/user_service:/app"
+      - "./backend/user_service/node_modules:/app/node_modules"
