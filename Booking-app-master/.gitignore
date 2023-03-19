@@ -1,0 +1,14 @@
+# .env
+.env
+*/.env
+
+# .DS_Store
+.DS_Store
+*/.DS_Store
+
+# packages
+node_modules
+*/node_modules
+
+# user service
+backend/user_service/mongodb_data
