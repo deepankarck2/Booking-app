@@ -24,6 +24,25 @@ services:
     volumes:
       - "./backend/user_service/mongodb_data:/data/db"
 
+  gateway:
+    build: "./backend/gateway"
+    depends_on:
+      - app-db
+    container_name: gatway-container
+    environment:
+      - NODE_ENV=${NODE_ENV}
+      - GATEWAY_HOST=${GATEWAY_HOST}
+      - GATEWAY_PORT=${GATEWAY_PORT}
+      - USER_SERVICE_HOST=${USER_SERVICE_HOST}
+      - FRONTEND_HOST=${FRONTEND_HOST}
+    env_file:
+      - .env
+    ports:
+      - ${GATEWAY_PORT}:${GATEWAY_PORT}
+    volumes:
+      - "./backend/gateway:/app"
+      - "./backend/gateway/node_modules:/app/node_modules"
+
   user-service:
     build: "./backend/user_service"
     depends_on:
