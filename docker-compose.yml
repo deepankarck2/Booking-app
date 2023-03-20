@@ -1,14 +1,14 @@
 version: "3.8"
 
 services:
-  # frontend:
-  #   build: "./frontend"
-  #   ports:
-  #     - "3000:3000"
-  #   depends_on:
-  #     - user-service
-  #   env_file:
-  #     - .env
+  frontend:
+    build: "./frontend"
+    ports:
+      - "3000:3000"
+    depends_on:
+      - user-service
+    env_file:
+      - .env
 
   app-db:
     image: mongo
@@ -34,6 +34,7 @@ services:
       - GATEWAY_HOST=${GATEWAY_HOST}
       - GATEWAY_PORT=${GATEWAY_PORT}
       - USER_SERVICE_HOST=${USER_SERVICE_HOST}
+      - FRONTEND_HOST=${FRONTEND_HOST}
     env_file:
       - .env
     ports:

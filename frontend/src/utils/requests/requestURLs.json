@@ -1,0 +1,4 @@
+{
+    "login": "http://localhost:4000/user/login",
+    "register": "http://localhost:4000/user/register"
+}

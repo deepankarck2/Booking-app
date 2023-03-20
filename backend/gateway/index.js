@@ -9,8 +9,8 @@ const userRoutes = require("./routes/user_service");
 
 app.use(express.json());
 app.use(cors({
-    origin: [process.env.NODE_ENV !== 'production' ? "*" : process.env.GATEWAY_HOST],
-    withCredentials: true
+    origin: [process.env.FRONTEND_HOST],
+    credentials: true,
 }));
 
 app.use("/user", userRoutes);
