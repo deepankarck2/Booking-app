@@ -1,6 +1,8 @@
 import axios from "axios";
 import requestURLs from "./requestURLs.json";
 import { getToken } from "../storage/getToken";
+import { setToken } from "../storage/setToken";
+
 
 export async function authRequest() {
     const token = getToken();
@@ -13,7 +15,9 @@ export async function authRequest() {
             withCredentials: true,
         });
 
-        console.log(res);
+        if (res.data.newAccessToken) {
+            setToken(res.data.newAccessToken);
+        }
 
     } catch (err) {
         throw err;

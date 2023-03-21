@@ -32,7 +32,6 @@ async function authController(req, res) {
                 try {
                     // token not in cache
                     const result = await db.verifyRefreshToken(decodedRefreshToken.id, refreshToken);
-                    console.log(result);
                     if (!result) return res.status(403).send();
 
                 } catch (err) {

@@ -8,9 +8,6 @@ const { redisClient } = require("./init");
  */
 async function verifyRefreshToken(userId, refreshToken) {
     try {
-        console.log(userId);
-        console.log(refreshToken);
-
         const reply = await redisClient.SISMEMBER(userId, refreshToken);
 
         return reply;

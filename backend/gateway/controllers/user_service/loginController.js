@@ -20,6 +20,12 @@ async function loginController(req, res) {
         // send back the refresh token as an httpOnly cookie
         res.cookie("refreshToken", data.refreshToken, { httpOnly: true });
 
+        // added refresh token to redis
+        await axios.put(process.env.USER_SERVICE_HOST + "/addRefreshToken", {
+            refreshToken: data.refreshToken,
+            id: data.id
+        });
+
         return res.json({
             status: "OK",
             id: data.id,

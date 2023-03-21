@@ -4,6 +4,8 @@ const router = express.Router();
 const controllers = require("../controllers/user_service");
 
 router.post("/login", controllers.loginController);
+router.post("/logout", controllers.logoutController);
+
 router.post("/register", controllers.registerController);
 
 router.delete("/deleteUserByEmail/:email", controllers.deleteUserByEmailController);

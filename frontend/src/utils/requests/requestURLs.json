@@ -1,5 +1,6 @@
 {
     "login": "http://localhost:4000/user/login",
+    "logout": "http://localhost:4000/user/logout",
     "register": "http://localhost:4000/user/register",
     "auth": "http://localhost:4000/user/auth"
 }
