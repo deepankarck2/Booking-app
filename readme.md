@@ -61,22 +61,26 @@ JWT_REFRESH_TOKEN_TIME=time
 
 ### Example
 ```
-# dev environment
+# dev enviroment
 NODE_ENV=development
 
 # databases
 MONGO_DB_HOST=mongodb://root:abc123@app-db-container:27017/booking-app?directConnection=true&authSource=admin&retryWrites=true
 MONGO_DB_PASSWORD=abc123
 
+# gateway
+GATEWAY_HOST=http://gateway-container:4000
+GATEWAY_PORT=4000
+FRONTEND_HOST=http://localhost:3000
+
 # user service
 USER_SERVICE_PORT=4001
 USER_SERVICE_HOST=http://user-service-container:4001
-GATEWAY_HOST=http://gateway-container:4000
 
 # secrets and keys
-JWT_ACCESS_TOKEN_SECRET=abc123
+JWT_ACCESS_TOKEN_SECRET=4c924c9420169b52d280
 JWT_ACCESS_TOKEN_TIME=10s
-JWT_REFRESH_TOKEN_SECRET=xyz123
+JWT_REFRESH_TOKEN_SECRET=5b1047644909141d164b
 JWT_REFRESH_TOKEN_TIME=30s
 ```
 
