@@ -32,8 +32,11 @@ async function loginController(req, res) {
     const accessToken = generateAccessToken(data);
     const refreshToken = generateRefreshToken(data);
 
+    // add refresh token to cache
+
+
     return res.json({
-      id: user._id,
+      id: user._id.toString(),
       email: user.email,
       username: user.username,
       accessToken,
