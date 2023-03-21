@@ -24,6 +24,18 @@ services:
     volumes:
       - "./backend/user_service/mongodb_data:/data/db"
 
+  auth-db:
+    image: redis
+    restart: always
+    container_name: auth-db-container
+    environment:
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
+    command: /bin/sh -c "redis-server --requirepass $$REDIS_PASSWORD"
+    ports:
+      - "6379:6379"
+    env_file:
+      - .env
+
   gateway:
     build: "./backend/gateway"
     depends_on:
@@ -51,6 +63,8 @@ services:
     environment:
       - NODE_ENV=${NODE_ENV}
       - MONGO_DB_HOST=${MONGO_DB_HOST}
+      - REDIS_HOST=${REDIS_HOST}
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
       - USER_SERVICE_PORT=${USER_SERVICE_PORT}
       - USER_SERVICE_HOST=${USER_SERVICE_HOST}
       - GATEWAY_HOST=${GATEWAY_HOST}

@@ -13,6 +13,8 @@ export async function loginRequest(email, password) {
         // put access token into local storage
         localStorage.setItem("token", data.accessToken);
 
+        localStorage.setItem("id", data.id);
+
         // put the user into context
     } catch (err) {
         throw err;

@@ -1,6 +1,6 @@
 const express = require("express");
 const cors = require("cors");
-const { initDatabase } = require("./database");
+const { initMongoDatabase, initAuthDatabase } = require("./database");
 require("dotenv").config();
 
 const routes = require("./routes");
@@ -20,10 +20,18 @@ app.use(
 
 app.use("/", routes);
 
-initDatabase()
-  .then(() => {
-    app.listen(PORT, () => {
-      console.log(`User service is listening at PORT ${PORT}`);
-    });
-  })
-  .catch((err) => console.error(err));
+async function startServer() {
+  try {
+    // start the mongo database
+    await initMongoDatabase();
+
+    // start the auth database
+    await initAuthDatabase();
+
+    app.listen(PORT, () => console.log(`User service listening on port ${PORT}`));
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+startServer();
