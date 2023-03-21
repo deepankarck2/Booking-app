@@ -47,10 +47,18 @@ NODE_ENV=development
 MONGO_DB_HOST=db-host-here
 MONGO_DB_PASSWORD=db-password-here
 
+# redis
+REDIS_PASSWORD=password
+REDIS_HOST=url
+
+# gateway
+GATEWAY_HOST=url
+GATEWAY_PORT=port
+FRONTEND_HOST=url
+
 # user service
-USER_SERVICE_PORT=port-number
-USER_SERVICE_HOST=url:port
-GATEWAY_HOST=url:port
+USER_SERVICE_PORT=port
+USER_SERVICE_HOST=url
 
 # secrets and keys
 JWT_ACCESS_TOKEN_SECRET=secret-key
@@ -61,12 +69,16 @@ JWT_REFRESH_TOKEN_TIME=time
 
 ### Example
 ```
-# dev enviroment
+# dev environment
 NODE_ENV=development
 
 # databases
 MONGO_DB_HOST=mongodb://root:abc123@app-db-container:27017/booking-app?directConnection=true&authSource=admin&retryWrites=true
 MONGO_DB_PASSWORD=abc123
+
+# redis
+REDIS_PASSWORD=abc123
+REDIS_HOST=redis://:abc123@auth-db-container:6379
 
 # gateway
 GATEWAY_HOST=http://gateway-container:4000
@@ -78,9 +90,9 @@ USER_SERVICE_PORT=4001
 USER_SERVICE_HOST=http://user-service-container:4001
 
 # secrets and keys
-JWT_ACCESS_TOKEN_SECRET=4c924c9420169b52d280
+JWT_ACCESS_TOKEN_SECRET=abc123
 JWT_ACCESS_TOKEN_TIME=10s
-JWT_REFRESH_TOKEN_SECRET=5b1047644909141d164b
+JWT_REFRESH_TOKEN_SECRET=xyz123
 JWT_REFRESH_TOKEN_TIME=30s
 ```
 
