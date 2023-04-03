@@ -60,6 +60,10 @@ FRONTEND_HOST=url
 USER_SERVICE_PORT=port
 USER_SERVICE_HOST=url
 
+# house service
+HOUSE_SERVICE_PORT=port
+HOUSE_SERVICE_HOST=url
+
 # secrets and keys
 JWT_ACCESS_TOKEN_SECRET=secret-key
 JWT_ACCESS_TOKEN_TIME=time
@@ -88,6 +92,10 @@ FRONTEND_HOST=http://localhost:3000
 # user service
 USER_SERVICE_PORT=4001
 USER_SERVICE_HOST=http://user-service-container:4001
+
+# house service
+HOUSE_SERVICE_PORT=4002
+HOUSE_SERVICE_HOST=http://house-service-container:4002
 
 # secrets and keys
 JWT_ACCESS_TOKEN_SECRET=abc123
