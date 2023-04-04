@@ -19,7 +19,11 @@ async function authController(req, res) {
     // decode the access token
     jwt.verify(accessToken, process.env.JWT_ACCESS_TOKEN_SECRET, (err, decodedAccessToken) => {
         // access token is still valid
-        if (!err) return res.json({});
+        if (!err) return res.json({
+            id: decodedAccessToken.id,
+            username: decodedAccessToken.username,
+            email: decodedAccessToken.email,
+        });
 
         // access token is invalid
         if (!err.message.includes("expire")) return res.status(401).send();
@@ -57,6 +61,9 @@ async function authController(req, res) {
 
                 return res.json({
                     newAccessToken,
+                    id: newAccessToken.id,
+                    username: newAccessToken.username,
+                    email: newAccessToken.email,
                 });
             }
 

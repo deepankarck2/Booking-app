@@ -19,6 +19,7 @@ export async function authRequest() {
             setToken(res.data.newAccessToken);
         }
 
+        return res.data;
     } catch (err) {
         throw err;
     }
