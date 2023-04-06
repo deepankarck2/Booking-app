@@ -27,11 +27,11 @@ export default function Dashboard() {
         }
 
         auth();
-    }, [navigate, setUser])
+    }, [navigate])
 
-    async function logoutHandler(e) {
+    async function logoutHandler() {
         try {
-            await logoutRequest(localStorage.getItem('id'));
+            await logoutRequest(user.id);
             navigate("/login");
 
         } catch (err) {
@@ -45,6 +45,8 @@ export default function Dashboard() {
 
     return <div>
         <h1>Dashboard</h1>
+        <button onClick={() => navigate("/add-house")}>Add a house</button>
+        <br></br>
         <button onClick={logoutHandler}>Logout</button>
     </div>
 }

@@ -45,6 +45,11 @@ const HouseSchema = new mongoose.Schema({
         type: Date,
         required: true,
     },
+
+    ownerId: {
+        type: String,
+        required: true,
+    }
 });
 
 module.exports = {

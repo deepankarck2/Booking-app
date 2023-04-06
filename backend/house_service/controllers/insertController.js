@@ -12,8 +12,9 @@ async function addHouseController(req, res) {
     const amenities = req.body.amenities || [];
     const available_dates = req.body.available_dates || [];
     const price = req.body.price;
+    const ownerId = req.body.ownerId;
 
-    if (!name || !location || !max_people || !price) return res.status(400).json({ status: "Missing required body fields" });
+    if (!name || !location || !max_people || !price || !ownerId) return res.status(400).json({ status: "Missing required body fields" });
 
     // change available date into Date format
     for (let i = 0; i < available_dates.length; i++) {
@@ -29,7 +30,8 @@ async function addHouseController(req, res) {
     try {
         await db.addHouse({
             name, location, desc, image, max_people,
-            amenities, available_dates, price, created_at: new Date(),
+            amenities, available_dates, price, ownerId,
+            created_at: new Date(),
         });
 
         return res.json({ status: 'OK' });
