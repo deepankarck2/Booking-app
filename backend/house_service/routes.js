@@ -10,5 +10,6 @@ router.delete("/removeHouse", controllers.deleteHouseByIdController);
 
 router.get("/getHouseById", controllers.fetchHouseByIdController);
 router.get("/getHouseByLocation", controllers.fetchHouseByLocationController);
+router.get("/getHousesByOwnerId", controllers.fetchHousesByOwnerIdController);
 
 module.exports = router;

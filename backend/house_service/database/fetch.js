@@ -28,7 +28,21 @@ async function fetchHouseByLocation(location) {
     }
 }
 
+/**
+ * Fetch all houses created by a user 
+ * @param {string} ownerId 
+ */
+async function fetchHousesByOwnerId(ownerId) {
+    try {
+        const houses = await House.find({ ownerId: ownerId });
+        return houses;
+    } catch (err) {
+        throw err;
+    }
+}
+
 module.exports = {
     fetchHouseById,
     fetchHouseByLocation,
+    fetchHousesByOwnerId,
 }

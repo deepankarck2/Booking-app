@@ -1,6 +1,6 @@
 const { addHouseController } = require("./insertController");
 const { deleteHouseByIdController } = require("./deleteController");
-const { fetchHouseByIdController, fetchHouseByLocationController } = require("./fetchController");
+const { fetchHouseByIdController, fetchHouseByLocationController, fetchHousesByOwnerIdController } = require("./fetchController");
 
 
 
@@ -9,4 +9,5 @@ module.exports = {
     deleteHouseByIdController,
     fetchHouseByIdController,
     fetchHouseByLocationController,
+    fetchHousesByOwnerIdController,
 }

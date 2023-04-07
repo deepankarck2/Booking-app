@@ -3,5 +3,6 @@
     "logout": "http://localhost:4000/user/logout",
     "register": "http://localhost:4000/user/register",
     "auth": "http://localhost:4000/user/auth",
-    "addHouse": "http://localhost:4000/house/addHouse"
+    "addHouse": "http://localhost:4000/house/addHouse",
+    "fetchHousesByOwnerId": "http://localhost:4000/house/getHousesByOwnerId"
 }
