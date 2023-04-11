@@ -46,8 +46,6 @@ async function fetchHousesByOwnerIdController(req, res) {
 
     try {
         const houses = await db.fetchHousesByOwnerId(ownerId);
-
-        console.log(houses);
         return res.json({ houses });
 
     } catch (err) {

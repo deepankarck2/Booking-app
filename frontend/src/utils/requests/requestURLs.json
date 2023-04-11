@@ -4,5 +4,6 @@
     "register": "http://localhost:4000/user/register",
     "auth": "http://localhost:4000/user/auth",
     "addHouse": "http://localhost:4000/house/addHouse",
-    "fetchHousesByOwnerId": "http://localhost:4000/house/getHousesByOwnerId"
+    "fetchHousesByOwnerId": "http://localhost:4000/house/getHousesByOwnerId",
+    "getAllHouses": "http://localhost:4000/house/getAllHouses"
 }

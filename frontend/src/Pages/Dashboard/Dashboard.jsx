@@ -51,12 +51,20 @@ export default function Dashboard() {
 
     return <div>
         <h1>Dashboard</h1>
+        <div>Hello, {user.username}</div>
+        <div>
+            <h2>My Bookings</h2>
+            <hr></hr>
+        </div>
+
         <div>
             {userCreatedHouses.map((house, i) => {
                 return <div key={i}>{JSON.stringify(house)}</div>
             })}
         </div>
         <button onClick={() => navigate("/add-house")}>Add a house</button>
+        <br></br>
+        <button onClick={() => navigate("/browse")}>Browse Houses</button>
         <br></br>
         <button onClick={logoutHandler}>Logout</button>
     </div>
