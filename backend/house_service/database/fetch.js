@@ -41,8 +41,21 @@ async function fetchHousesByOwnerId(ownerId) {
     }
 }
 
+/**
+ * Fetch all houses that exist in the database
+ */
+async function fetchAllHouses() {
+    try {
+        const houses = await House.find();
+        return houses;
+    } catch (err) {
+        throw err;
+    }
+}
+
 module.exports = {
     fetchHouseById,
     fetchHouseByLocation,
     fetchHousesByOwnerId,
+    fetchAllHouses,
 }

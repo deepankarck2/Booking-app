@@ -56,8 +56,21 @@ async function fetchHousesByOwnerIdController(req, res) {
     }
 }
 
+async function fetchAllHousesController(req, res) {
+    try {
+        const houses = await db.fetchAllHouses();
+        if (!houses) return res.json({ houses: [] });
+
+        return res.json({ houses: houses });
+    } catch (err) {
+        console.error(err);
+        return res.status(500).send();
+    }
+}
+
 module.exports = {
     fetchHouseByIdController,
     fetchHouseByLocationController,
     fetchHousesByOwnerIdController,
+    fetchAllHousesController,
 }

@@ -20,6 +20,18 @@ async function fetchHousesByOwnerIdController(req, res) {
     }
 }
 
+async function fetchAllHousesController(req, res) {
+    try {
+        const response = await axios.get(process.env.HOUSE_SERVICE_HOST + "/getAllHouses");
+        if (!response.data) return res.status(500).send();
+
+        return res.json({ houses: response.data.houses });
+    } catch (err) {
+        return res.status(getHTTPErrorCode(err)).send();
+    }
+}
+
 module.exports = {
     fetchHousesByOwnerIdController,
+    fetchAllHousesController,
 }

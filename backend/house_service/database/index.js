@@ -1,7 +1,7 @@
 const { initMongoDatabase } = require("./init");
 const { addHouse } = require("./insert");
 const { deleteHouseById, } = require("./delete");
-const { fetchHouseById, fetchHouseByLocation, fetchHousesByOwnerId } = require("./fetch");
+const { fetchHouseById, fetchHouseByLocation, fetchHousesByOwnerId, fetchAllHouses } = require("./fetch");
 
 
 module.exports = {
@@ -11,4 +11,5 @@ module.exports = {
     fetchHouseById,
     fetchHouseByLocation,
     fetchHousesByOwnerId,
+    fetchAllHouses,
 }

@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const { initMongoDatabase } = require('./database');
+const generateHouses = require('./database/generateHouses');
 require("dotenv").config();
 
 const routes = require("./routes");
@@ -17,7 +18,21 @@ app.use(cors({
 app.use("/", routes);
 
 initMongoDatabase().then(() => {
-    app.listen(PORT, () => {
-        console.log(`House service listening on ${PORT}`);
-    });
+
+    // if not in production, create dummy house entries
+    if (process.env.NODE_ENV !== 'production') {
+        console.log(`Current environment is not production, generating dummy house entries`);
+        generateHouses().then(() => {
+            app.listen(PORT, () => {
+                console.log(`House service listening on ${PORT}`);
+            });
+        }).catch(err => console.error(err));
+    }
+
+    else {
+        app.listen(PORT, () => {
+            console.log(`House service listening on ${PORT}`);
+        });
+    }
+
 }).catch(err => console.error(err));

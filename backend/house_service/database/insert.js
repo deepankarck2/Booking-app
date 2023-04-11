@@ -16,7 +16,8 @@ async function addHouse(reqObj) {
             available_dates: reqObj.available_dates,
             price: reqObj.price,
             created_at: reqObj.created_at,
-            ownerId: reqObj.ownerId
+            ownerId: reqObj.ownerId,
+            bookings: [],
         });
     } catch (err) {
         throw err;

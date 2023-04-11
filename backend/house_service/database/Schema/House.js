@@ -49,7 +49,24 @@ const HouseSchema = new mongoose.Schema({
     ownerId: {
         type: String,
         required: true,
-    }
+    },
+
+    bookings: [{
+        booker_id: {
+            type: String,
+            required: true,
+        },
+
+        checkInDate: {
+            type: Date,
+            required: true,
+        },
+
+        checkOutDate: {
+            type: Date,
+            required: true
+        },
+    }]
 });
 
 module.exports = {
