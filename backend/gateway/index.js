@@ -7,6 +7,7 @@ const app = express();
 const PORT = process.env.PORT || 4000;
 
 const userRoutes = require("./routes/user_service");
+const houseRoutes = require("./routes/house_service");
 
 app.use(express.json());
 app.use(cookieParser());
@@ -16,6 +17,7 @@ app.use(cors({
 }));
 
 app.use("/user", userRoutes);
+app.use("/house", houseRoutes);
 
 app.get("/", (req, res) => res.json({ status: "OK" }));
 

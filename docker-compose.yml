@@ -1,15 +1,6 @@
 version: "3.8"
 
 services:
-  frontend:
-    build: "./frontend"
-    ports:
-      - "3000:3000"
-    depends_on:
-      - user-service
-    env_file:
-      - .env
-
   app-db:
     image: mongo
     restart: always
@@ -46,6 +37,7 @@ services:
       - GATEWAY_HOST=${GATEWAY_HOST}
       - GATEWAY_PORT=${GATEWAY_PORT}
       - USER_SERVICE_HOST=${USER_SERVICE_HOST}
+      - HOUSE_SERVICE_HOST=${HOUSE_SERVICE_HOST}
       - FRONTEND_HOST=${FRONTEND_HOST}
     env_file:
       - .env
@@ -79,3 +71,22 @@ services:
     volumes:
       - "./backend/user_service:/app"
       - "./backend/user_service/node_modules:/app/node_modules"
+
+  house-service:
+    build: "./backend/house_service"
+    depends_on:
+      - app-db
+    container_name: house-service-container
+    environment:
+      - NODE_ENV=${NODE_ENV}
+      - MONGO_DB_HOST=${MONGO_DB_HOST}
+      - GATEWAY_HOST=${GATEWAY_HOST}
+      - HOUSE_SERVICE_PORT=${HOUSE_SERVICE_PORT}
+      - HOUSE_SERVICE_HOST=${HOUSE_SERVICE_HOST}
+    env_file:
+      - .env
+    ports:
+      - ${HOUSE_SERVICE_PORT}:${HOUSE_SERVICE_PORT}
+    volumes:
+      - "./backend/house_service:/app"
+      - "./backend/house_service/node_modules:/app/node_modules"
