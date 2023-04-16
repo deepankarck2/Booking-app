@@ -1,4 +1,6 @@
 const { House } = require("./Schema/House");
+const { Booking } = require("./Schema/Booking");
+
 
 /**
  * Get a house given its id
@@ -53,9 +55,31 @@ async function fetchAllHouses() {
     }
 }
 
+async function fetchBookingsByBookerId(bookerId) {
+    try {
+        const bookings = await Booking.find({ bookerId: bookerId });
+        return bookings;
+
+    } catch (err) {
+        throw err;
+    }
+}
+
+async function fetchBookingsByHouseOwnerId(ownerId) {
+    try {
+        const bookings = await Booking.find({ ownerId: ownerId });
+        return bookings;
+
+    } catch (err) {
+        throw err;
+    }
+}
+
 module.exports = {
     fetchHouseById,
     fetchHouseByLocation,
     fetchHousesByOwnerId,
     fetchAllHouses,
+    fetchBookingsByBookerId,
+    fetchBookingsByHouseOwnerId,
 }

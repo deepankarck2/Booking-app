@@ -66,9 +66,41 @@ async function fetchAllHousesController(req, res) {
     }
 }
 
+async function fetchBookingsByBookerIdController(req, res) {
+    const bookerId = req.query.bookerId;
+
+    if (!bookerId) return res.status(400).send();
+
+    try {
+        const bookings = await db.fetchBookingsByBookerId(bookerId);
+        return res.json({ bookings: bookings });
+
+    } catch (err) {
+        console.error(err);
+        return res.status(500).send();
+    }
+}
+
+async function fetchBookingsByHouseOwnerIdController(req, res) {
+    const houseOwnerId = req.query.houseOwnerId;
+
+    if (!houseOwnerId) return res.status(400).send();
+
+    try {
+        const bookings = await db.fetchBookingsByHouseOwnerId(houseOwnerId);
+        return res.json({ bookings: bookings });
+
+    } catch (err) {
+        console.error(err);
+        return res.status(500).send();
+    }
+}
+
 module.exports = {
     fetchHouseByIdController,
     fetchHouseByLocationController,
     fetchHousesByOwnerIdController,
     fetchAllHousesController,
+    fetchBookingsByBookerIdController,
+    fetchBookingsByHouseOwnerIdController,
 }
