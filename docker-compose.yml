@@ -1,6 +1,16 @@
 version: "3.8"
 
 services:
+  frontend:
+    build: "./frontend"
+    ports:
+      - "3000:3000"
+    stdin_open: true
+    tty: true
+    depends_on:
+      - app-db
+    env_file:
+      - .env
   app-db:
     image: mongo
     restart: always
