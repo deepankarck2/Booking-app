@@ -28,6 +28,9 @@ async function addHouseController(req, res) {
 
 
     try {
+        const house = await db.fetchHouseByLocation(location);
+        if (house !== null) return res.status(409).send();
+
         await db.addHouse({
             name, location, desc, image, max_people,
             amenities, available_dates, price, ownerId,
