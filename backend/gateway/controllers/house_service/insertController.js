@@ -48,6 +48,28 @@ async function addHouseController(req, res) {
 
 }
 
+async function addBookingController(req, res) {
+    const booker_id = req.body.booker_id;
+    const house_owner_id = req.body.house_owner_id;
+    const house_id = req.body.house_id;
+    const checkInDate = req.body.checkInDate;
+    const checkOutDate = req.body.checkOutDate;
+
+    if (!booker_id || !house_owner_id || !house_id || !checkInDate || !checkOutDate)
+        return res.status(400).send();
+
+    try {
+        await axios.post(process.env.HOUSE_SERVICE_HOST + "/addBooking", {
+            booker_id, house_owner_id, house_id, checkInDate, checkOutDate
+        });
+
+        return res.json({ status: "OK" });
+    } catch (err) {
+        return res.status(getHTTPErrorCode(err)).send();
+    }
+}
+
 module.exports = {
     addHouseController,
+    addBookingController,
 }

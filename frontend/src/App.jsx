@@ -7,7 +7,7 @@ import Login from "./Pages/Login/Login";
 import Register from "./Pages/Register/Register";
 import AddHouse from "./Pages/Dashboard/components/AddHouse/AddHouse";
 import { UserProvider } from "./Context/UserContext";
-import AllHouseList from "./Components/AllHouseList/AllHouseList";
+import Browse from "./Pages/Browse/Browse";
 
 function App() {
   return (
@@ -17,7 +17,7 @@ function App() {
           <Route index element={<Home />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/add-house" element={<AddHouse />} />
-          <Route path="/browse" element={<AllHouseList />} />
+          <Route path="/browse" element={<Browse />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
         </Route>

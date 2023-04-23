@@ -51,7 +51,7 @@ async function addBookingController(req, res) {
     const checkInDate = req.body.checkInDate;
     const checkOutDate = req.body.checkOutDate;
 
-    if (!booker_id || !house_owner_id || !house_id || checkInDate || checkOutDate)
+    if (!booker_id || !house_owner_id || !house_id || !checkInDate || !checkOutDate)
         return res.status(400).send();
 
     const createdAt = new Date();

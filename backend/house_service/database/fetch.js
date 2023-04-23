@@ -57,7 +57,7 @@ async function fetchAllHouses() {
 
 async function fetchBookingsByBookerId(bookerId) {
     try {
-        const bookings = await Booking.find({ bookerId: bookerId });
+        const bookings = await Booking.find({ booker_id: bookerId });
         return bookings;
 
     } catch (err) {
@@ -67,7 +67,7 @@ async function fetchBookingsByBookerId(bookerId) {
 
 async function fetchBookingsByHouseOwnerId(ownerId) {
     try {
-        const bookings = await Booking.find({ ownerId: ownerId });
+        const bookings = await Booking.find({ house_owner_id: ownerId });
         return bookings;
 
     } catch (err) {

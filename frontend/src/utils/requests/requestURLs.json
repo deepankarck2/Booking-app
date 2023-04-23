@@ -5,5 +5,7 @@
     "auth": "http://localhost:4000/user/auth",
     "addHouse": "http://localhost:4000/house/addHouse",
     "fetchHousesByOwnerId": "http://localhost:4000/house/getHousesByOwnerId",
-    "getAllHouses": "http://localhost:4000/house/getAllHouses"
+    "getAllHouses": "http://localhost:4000/house/getAllHouses",
+    "addBooking": "http://localhost:4000/house/addBooking",
+    "fetchBookingsByBooker": "http://localhost:4000/house/fetchBookingsByBookerId"
 }
