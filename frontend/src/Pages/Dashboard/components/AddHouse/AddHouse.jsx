@@ -163,10 +163,11 @@ export default function AddHouse() {
 
             <label>Price</label><br></br>
             <input type="number" ref={formRefs.priceRef} className="border border-gray-300 rounded-md px-4 py-2 mt-2 focus:outline-none focus:border-black" />
-            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            
+</div>
+       <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
   Submit
 </button>
-</div>
         </form>
     </div>
 }
