@@ -1,4 +1,6 @@
 const { House } = require("./Schema/House");
+const { Booking } = require("./Schema/Booking");
+
 
 /**
  * Add a house to the database
@@ -17,7 +19,21 @@ async function addHouse(reqObj) {
             price: reqObj.price,
             created_at: reqObj.created_at,
             ownerId: reqObj.ownerId,
-            bookings: [],
+        });
+    } catch (err) {
+        throw err;
+    }
+}
+
+async function addBooking(reqObj) {
+    try {
+        await Booking.create({
+            booker_id: reqObj.booker_id,
+            house_owner_id: reqObj.house_owner_id,
+            house_id: reqObj.house_id,
+            checkInDate: reqObj.checkInDate,
+            checkOutDate: reqObj.checkOutDate,
+            createdAt: reqObj.createdAt,
         });
     } catch (err) {
         throw err;
@@ -26,4 +42,5 @@ async function addHouse(reqObj) {
 
 module.exports = {
     addHouse,
+    addBooking,
 }

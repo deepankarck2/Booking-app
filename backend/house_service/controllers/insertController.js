@@ -28,6 +28,9 @@ async function addHouseController(req, res) {
 
 
     try {
+        const house = await db.fetchHouseByLocation(location);
+        if (house !== null) return res.status(409).send();
+
         await db.addHouse({
             name, location, desc, image, max_people,
             amenities, available_dates, price, ownerId,
@@ -41,6 +44,35 @@ async function addHouseController(req, res) {
     }
 }
 
+/**
+ * Controller for adding a new booking to the database 
+ */
+async function addBookingController(req, res) {
+    const booker_id = req.body.booker_id;
+    const house_owner_id = req.body.house_owner_id;
+    const house_id = req.body.house_id;
+    const checkInDate = req.body.checkInDate;
+    const checkOutDate = req.body.checkOutDate;
+
+    if (!booker_id || !house_owner_id || !house_id || checkInDate || checkOutDate)
+        return res.status(400).send();
+
+    const createdAt = new Date();
+
+    try {
+        await db.addBooking({
+            booker_id, house_owner_id, house_id,
+            checkInDate, checkOutDate, createdAt,
+        });
+
+        return res.json({ status: "OK" });
+    } catch (err) {
+        console.error(err);
+        return res.status(500).send();
+    }
+}
+
 module.exports = {
     addHouseController,
+    addBookingController,
 }
