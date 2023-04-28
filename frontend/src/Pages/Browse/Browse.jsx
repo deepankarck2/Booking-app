@@ -4,6 +4,7 @@ import { UserContext } from "../../Context/UserContext";
 import { authRequest } from "../../utils/requests/auth";
 import { addBookingRequest } from "../../utils/requests/addBooking";
 import { useNavigate } from "react-router-dom";
+import House from "./components/House";
 
 export default function Browse() {
     const navigate = useNavigate();
@@ -55,16 +56,8 @@ export default function Browse() {
 
     return <div>
         <h1>Browse</h1>
-        {houses.map((house, i) => {
-            return <div key={i}>
-                <div>{house.name}</div>
-                <img src={house.image} alt="house-img" width="256" />
-                <div>{JSON.stringify(house)}</div>
-
-                {user.email && user.username ? <button onClick={() => bookHandler(house)}>Book</button> : <div>You need to login to place a booking</div>}
-
-                <br></br>
-            </div>
-        })}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            {houses.map((house) => <House house={house} user={user} key={house._id} />)}
+        </div>
     </div>
 }
