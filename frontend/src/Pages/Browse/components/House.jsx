@@ -6,7 +6,7 @@ export default function House(props) {
         <p className="text-gray-800 mb-2">Location: {props.house.location}</p>
         <p className="text-gray-800 mb-2">Price per night: ${props.house.price}</p>
         {props.user.email && props.user.username ? (
-            <button onClick={props.bookHandler} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full mt-2">
+            <button onClick={() => props.bookHandler(props.house)} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full mt-2">
                 Book
             </button>
         ) : (
