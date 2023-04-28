@@ -75,7 +75,6 @@ async function fetchBookingsByBookerIdController(req, res) {
         const bookings = await db.fetchBookingsByBookerId(bookerId);
 
         return res.json({ bookings: bookings });
-
     } catch (err) {
         console.error(err);
         return res.status(500).send();

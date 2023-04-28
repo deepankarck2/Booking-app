@@ -20,10 +20,10 @@ async function deleteHouseByIdController(req, res) {
 async function removeBookingController(req, res) {
     const bookingId = req.query.bookingId;
 
-    if (!bookingId) return res.status(400).send();
+    if (bookingId === undefined || bookingId === "") return res.status(400).send();
 
     try {
-        await db.deleteBooking(bookingId);
+        await db.deleteBookingById(bookingId);
         return res.send();
     } catch (err) {
         console.error(err);

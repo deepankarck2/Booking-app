@@ -66,12 +66,26 @@ async function fetchBookingsByBookerId(bookerId) {
 
         for (const booking of bookings) {
             const house_id = booking.house_id;
-            if (!house_id) return;
+            if (!house_id) continue;
 
             const house = await House.findById(house_id);
+            if (!house) continue;
 
-            if (!house) return;
-            houses.push(house);
+            houses.push({
+                booking_id: booking._id.toString(),
+                checkInDate: booking.checkInDate,
+                checkOutDate: booking.checkOutDate,
+                house_id: house._id.toString(),
+                name: house.name,
+                location: house.location,
+                desc: house.desc,
+                image: house.image,
+                max_people: house.max_people,
+                amenities: house.amenities,
+                available_dates: house.available_dates,
+                price: house.price,
+                ownerId: house.ownerId
+            });
         }
 
         return houses;
