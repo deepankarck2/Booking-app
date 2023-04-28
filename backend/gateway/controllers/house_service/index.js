@@ -1,6 +1,6 @@
 const { addHouseController, addBookingController } = require("./insertController");
 const { fetchHousesByOwnerIdController, fetchAllHousesController, fetchBookingsByBookerIdController, fetchBookingsByOwnerIdController } = require("./fetchController");
-const { removeBookingController } = require("./deleteController");
+const { removeBookingController, removeHouseController } = require("./deleteController");
 
 module.exports = {
     addHouseController,
@@ -8,6 +8,7 @@ module.exports = {
     fetchHousesByOwnerIdController,
     fetchAllHousesController,
     removeBookingController,
+    removeHouseController,
     fetchBookingsByBookerIdController,
     fetchBookingsByOwnerIdController,
 }

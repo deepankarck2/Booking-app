@@ -7,5 +7,7 @@
     "fetchHousesByOwnerId": "http://localhost:4000/house/getHousesByOwnerId",
     "getAllHouses": "http://localhost:4000/house/getAllHouses",
     "addBooking": "http://localhost:4000/house/addBooking",
-    "fetchBookingsByBooker": "http://localhost:4000/house/fetchBookingsByBookerId"
+    "fetchBookingsByBooker": "http://localhost:4000/house/fetchBookingsByBookerId",
+    "removeBooking": "http://localhost:4000/house/removeBooking",
+    "removeHouse": "http://localhost:4000/house/removeHouse"
 }

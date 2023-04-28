@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { UserContext } from "../../../Context/UserContext";
 import { fetchBookingsByBookerRequest } from "../../../utils/requests/fetchBookingsByBooker";
+import { removeBookingRequest } from '../../../utils/requests/removeBooking';
 
 export default function UserBookings(props) {
     const { user, setUser } = useContext(UserContext);
@@ -17,6 +18,14 @@ export default function UserBookings(props) {
         getUserBookings();
     }, []);
 
+    async function removeBookingHandler(bookingId) {
+        try {
+            await removeBookingRequest(bookingId);
+        } catch (err) {
+            console.error(err);
+        }
+    }
+
     if (loading) {
         return <div>Loading...</div>
     }
@@ -30,6 +39,7 @@ export default function UserBookings(props) {
                 <p className="text-gray-800 mb-2">{house.description}</p>
                 <p className="text-gray-800 mb-2">Location: {house.location}</p>
                 <p className="text-gray-800 mb-2">Price per night: ${house.price}</p>
+                <button onClick={() => removeBookingHandler(house.booking_id)}>Remove Booking</button>
             </div>
         ))}
     </div>
