@@ -53,7 +53,9 @@ export default function AllHouseList() {
           </button>
         ) : (
           <div class="text-red-600 mt-2">You need to login to place a booking</div>
+          
         )}
+   
       </div>
     ))}
   </div>

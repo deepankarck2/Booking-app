@@ -14,3 +14,4 @@ button.primary {
   background-color: #f5385d;
   @apply bg-primary p-2 w-full text-white rounded-2xl;
 }
+

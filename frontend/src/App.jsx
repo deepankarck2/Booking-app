@@ -9,12 +9,16 @@ import AddHouse from "./Pages/Dashboard/components/AddHouse/AddHouse";
 import { UserProvider } from "./Context/UserContext";
 import AllHouseList from "./Components/AllHouseList/AllHouseList";
 import Userhouse from "./Userhouse";
+import Footer from "./Footer";
+
 
 function App() {
   return (
     <UserProvider>
+    
       <Routes>
         <Route path="/" element={<Layout />}>
+        <Route path="/" element={<Footer/>} />
           <Route index element={<Home />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/add-house" element={<AddHouse />} />
@@ -22,8 +26,11 @@ function App() {
           <Route path="/userhouse" element={<Userhouse />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+  
         </Route>
+       
       </Routes>
+  
     </UserProvider>
   );
 }
