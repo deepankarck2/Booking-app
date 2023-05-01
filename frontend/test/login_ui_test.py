@@ -15,13 +15,13 @@ class LoginUITest(unittest.TestCase):
     def test_login_form(self):
         driver = self.driver
 
-        email_input = driver.find_element_by_id("login-email")
-        password_input = driver.find_element_by_id("login-password")
+        email_input = driver.find_element(By.ID,"login-email")
+        password_input = driver.find_element(By.ID, "login-password")
 
-        email_input.send_keys("testuser3@email.com")
-        password_input.send_keys("testpassword3")
+        email_input.send_keys("testuserr8@email.com")
+        password_input.send_keys("testuserr8")
 
-        submit_button = driver.find_element_by_id("login-submit")
+        submit_button = driver.find_element(By.ID, "login-submit")
         submit_button.click()
 
         WebDriverWait(driver, 10).until(

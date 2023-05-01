@@ -15,15 +15,15 @@ class RegisterUITest(unittest.TestCase):
     def test_register_form(self):
         driver = self.driver
 
-        username_input = driver.find_element_by_id("reg-username")
-        email_input = driver.find_element_by_id("reg-email")
-        password_input = driver.find_element_by_id("reg-password")
+        username_input = driver.find_element(By.ID, "reg-username")
+        email_input = driver.find_element(By.ID, "reg-email")
+        password_input = driver.find_element(By.ID, "reg-password")
 
-        username_input.send_keys("testuser3")
-        email_input.send_keys("testuser3@email.com")
-        password_input.send_keys("testpassword3")
+        username_input.send_keys("testuserr8")
+        email_input.send_keys("testuserr8@email.com")
+        password_input.send_keys("testuserr8")
 
-        submit_button = driver.find_element_by_id("reg-submit")
+        submit_button = driver.find_element(By.ID, "reg-submit")
         submit_button.click()
 
         WebDriverWait(driver, 10).until(
