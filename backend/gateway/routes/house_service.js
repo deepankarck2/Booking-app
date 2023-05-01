@@ -1,14 +1,15 @@
 const express = require('express');
 const router = express.Router();
-
+const { verifyTokens } = require("../middlewares/verifyTokens");
 const controllers = require("../controllers/house_service");
 
-router.post("/addHouse", controllers.addHouseController);
+router.post("/addHouse", verifyTokens, controllers.addHouseController);
 router.get("/getHousesByOwnerId", controllers.fetchHousesByOwnerIdController);
 router.get("/getAllHouses", controllers.fetchAllHousesController);
+router.delete("/removeHouse", verifyTokens, controllers.removeHouseController);
 
-router.post("/addBooking", controllers.addBookingController);
-router.delete("/removeBooking", controllers.removeBookingController);
+router.post("/addBooking", verifyTokens, controllers.addBookingController);
+router.delete("/removeBooking", verifyTokens, controllers.removeBookingController);
 router.get("/fetchBookingsByBookerId", controllers.fetchBookingsByBookerIdController);
 router.get("/fetchBookingsByOwnerId", controllers.fetchBookingsByOwnerIdController);
 

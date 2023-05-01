@@ -1,9 +1,9 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { UserContext } from "../../../Context/UserContext";
 import { fetchHousesByOwnerIdRequest } from '../../../utils/requests/fetchHousesByOwnerId';
+import { removeHouseRequest } from '../../../utils/requests/removeHouse';
 
 export default function Userhouse(props) {
-
   const { user, setUser } = useContext(UserContext);
   const [loading, setLoading] = useState(true);
   const [userCreatedHouses, setUserCreatedHouses] = useState([]);
@@ -22,9 +22,18 @@ export default function Userhouse(props) {
     auth();
   }, [])
 
+  async function removeHouseHandler(houseId) {
+    try {
+      await removeHouseRequest(houseId);
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
   if (loading) {
     return <div>Loading...</div>
   }
+
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
       <button onClick={() => props.setDashboardPages(0)}>Go Back</button>
@@ -35,6 +44,7 @@ export default function Userhouse(props) {
           <p className="text-gray-800 mb-2">{house.description}</p>
           <p className="text-gray-800 mb-2">Location: {house.location}</p>
           <p className="text-gray-800 mb-2">Price per night: ${house.price}</p>
+          <button onClick={() => removeHouseHandler(house._id)}>Remove Housing</button>
         </div>
       ))}
     </div>
