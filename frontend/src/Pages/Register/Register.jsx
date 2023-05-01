@@ -37,10 +37,10 @@ export default function Register() {
           <h1 className="text-4xl text-center mb-4">Register</h1>
 
           <form className="  max-w-md mx-auto" onSubmit={submitHandler}>
-            <input type="text" placeholder="username" ref={formRefs.usernameRef} />
-            <input type="email" placeholder="your@email.com" ref={formRefs.emailRef} />
-            <input type="password" placeholder="password" ref={formRefs.passwordRef} />
-            <button className="primary">Register</button>
+            <input type="text" placeholder="username" id="reg-username" ref={formRefs.usernameRef} />
+            <input type="email" placeholder="your@email.com" id="reg-email" ref={formRefs.emailRef} />
+            <input type="password" placeholder="password" id="reg-password" ref={formRefs.passwordRef} />
+            <button className="primary" id="reg-submit">Register</button>
             <div className="text-center py-2 text-gray-500">
               Already a member?{" "}
               <Link className="underline text-black" to={"/login"}>
