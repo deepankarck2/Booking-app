@@ -1,4 +1,5 @@
 const { House } = require("./Schema/House");
+const { Booking } = require("./Schema/Booking");
 
 /**
  * Delete a house given its id
@@ -12,6 +13,15 @@ async function deleteHouseById(houseId) {
     }
 }
 
+async function deleteBookingById(bookingId) {
+    try {
+        await Booking.deleteOne({ _id: bookingId });
+    } catch (err) {
+        throw err;
+    }
+}
+
 module.exports = {
     deleteHouseById,
+    deleteBookingById,
 }

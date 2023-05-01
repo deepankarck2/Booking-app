@@ -1,14 +1,12 @@
-import { Routes, Route, BrowserRouter } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import Layout from "./Layout";
 import Dashboard from "./Pages/Dashboard/Dashboard";
 import Home from "./Pages/Home/Home";
 import Login from "./Pages/Login/Login";
 import Register from "./Pages/Register/Register";
-import AddHouse from "./Pages/Dashboard/components/AddHouse/AddHouse";
 import { UserProvider } from "./Context/UserContext";
-import AllHouseList from "./Components/AllHouseList/AllHouseList";
-import Userhouse from "./Userhouse";
+import Browse from "./Pages/Browse/Browse";
 
 function App() {
   return (
@@ -17,9 +15,7 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/add-house" element={<AddHouse />} />
-          <Route path="/browse" element={<AllHouseList />} />
-          <Route path="/userhouse" element={<Userhouse />} />
+          <Route path="/browse" element={<Browse />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
         </Route>

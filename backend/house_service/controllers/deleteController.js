@@ -17,6 +17,21 @@ async function deleteHouseByIdController(req, res) {
     }
 }
 
+async function removeBookingController(req, res) {
+    const bookingId = req.query.bookingId;
+
+    if (bookingId === undefined || bookingId === "") return res.status(400).send();
+
+    try {
+        await db.deleteBookingById(bookingId);
+        return res.send();
+    } catch (err) {
+        console.error(err);
+        return res.status(500).send();
+    }
+}
+
 module.exports = {
     deleteHouseByIdController,
+    removeBookingController,
 }

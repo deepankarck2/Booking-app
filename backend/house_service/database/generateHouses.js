@@ -91,7 +91,7 @@ const dummyUserId = '000000000';
 async function generateHouses() {
     try {
         const houses = await fetchHousesByOwnerId(dummyUserId);
-        if (houses !== null || houses.length > 0) return;
+        if (houses.length > 0) return;
     } catch (err) {
         console.log(`Cannot generate sample houses`);
         throw err;
