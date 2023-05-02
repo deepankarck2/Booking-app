@@ -1,9 +1,10 @@
 import React, { useContext, useState, useEffect } from 'react'
-import { UserContext } from "../../../Context/UserContext";
-import { fetchHousesByOwnerIdRequest } from '../../../utils/requests/fetchHousesByOwnerId';
-import { removeHouseRequest } from '../../../utils/requests/removeHouse';
+import { UserContext } from "../../Context/UserContext";
+import { fetchHousesByOwnerIdRequest } from '../../utils/requests/fetchHousesByOwnerId';
+import { removeHouseRequest } from '../../utils/requests/removeHouse';
+import { authRequest } from "../../utils/requests/auth";
 
-export default function Userhouse(props) {
+export default function Userhouse() {
   const { user, setUser } = useContext(UserContext);
   const [loading, setLoading] = useState(true);
   const [userCreatedHouses, setUserCreatedHouses] = useState([]);
@@ -11,8 +12,16 @@ export default function Userhouse(props) {
   useEffect(() => {
     const auth = async () => {
       try {
+        // authenticate user
+        const userData = await authRequest();
+        setUser({
+          id: userData.id,
+          username: userData.username,
+          email: userData.email,
+        });
+
         // fetch user created houses if any
-        const houses = await fetchHousesByOwnerIdRequest(user.id);
+        const houses = await fetchHousesByOwnerIdRequest(userData.id);
         setUserCreatedHouses(houses);
         setLoading(false);
       } catch (err) {
@@ -36,7 +45,6 @@ export default function Userhouse(props) {
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-      <button onClick={() => props.setDashboardPages(0)}>Go Back</button>
       {userCreatedHouses.map((house, i) => (
         <div key={i} className="bg-white rounded-lg shadow-md p-4">
           <h2 className="text-lg font-bold mb-2">{house.name}</h2>
