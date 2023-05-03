@@ -11,10 +11,11 @@ async function registerUser(registerReq) {
     const username = registerReq.username;
     const email = registerReq.email;
     const password = registerReq.password;
+    const money = registerReq.money;
 
     try {
         await User.create({
-            username, email, password
+            username, email, password, money
         });
     } catch (err) {
         throw err;
