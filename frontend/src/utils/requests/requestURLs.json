@@ -9,5 +9,7 @@
     "addBooking": "http://localhost:4000/house/addBooking",
     "fetchBookingsByBooker": "http://localhost:4000/house/fetchBookingsByBookerId",
     "removeBooking": "http://localhost:4000/house/removeBooking",
-    "removeHouse": "http://localhost:4000/house/removeHouse"
+    "removeHouse": "http://localhost:4000/house/removeHouse",
+    "getMoney": "http://localhost:4000/user/getMoney",
+    "addMoney": "http://localhost:4000/user/addMoney"
 }

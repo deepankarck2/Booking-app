@@ -66,6 +66,12 @@ export default function Dashboard() {
                 Browse Houses
             </button>
             <button
+                className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full mt-4 ml-4"
+                onClick={() => navigate("/deposit-money")}
+            >
+                Deposit Money
+            </button>
+            <button
                 className="bg-red-500 hover:bg-red-700  text-white font-bold py-2 px-4 rounded-full mt-4 ml-4"
                 onClick={() => navigate("/user-bookings")}
             >
