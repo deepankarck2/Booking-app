@@ -54,13 +54,30 @@ async function addBookingController(req, res) {
     const house_id = req.body.house_id;
     const checkInDate = req.body.checkInDate;
     const checkOutDate = req.body.checkOutDate;
+    const house_price = req.body.price;
 
     if (!booker_id || !house_owner_id || !house_id || !checkInDate || !checkOutDate)
         return res.status(400).send();
 
     try {
+        const response = await axios.get(process.env.USER_SERVICE_HOST + `/getMoney?userId=${booker_id}`);
+
+        const amount = response.data?.amount;
+
+        if (!amount) return res.status(500).json({ status: "Cannot get user balance" });
+
+        const difference = parseFloat(amount) - parseFloat(house_price);
+
+        if (difference < 0) return res.status(402).send({ status: "You do not have enough money to book" });
+
+
         await axios.post(process.env.HOUSE_SERVICE_HOST + "/addBooking", {
             booker_id, house_owner_id, house_id, checkInDate, checkOutDate
+        });
+
+        await axios.post(process.env.USER_SERVICE_HOST + "/addMoney", {
+            amount: house_price * -1,
+            userId: booker_id,
         });
 
         return res.json({ status: "OK" });
