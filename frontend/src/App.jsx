@@ -7,7 +7,10 @@ import Login from "./Pages/Login/Login";
 import Register from "./Pages/Register/Register";
 import { UserProvider } from "./Context/UserContext";
 import Browse from "./Pages/Browse/Browse";
-import Footer from "./Footer";
+import UserBookings from "./Pages/UserBookings/UserBookings";
+import Userhouse from "./Pages/UserHouse/Userhouse";
+import AddHouse from "./Pages/AddHouse/AddHouse";
+import AddMoney from "./Pages/AddMoney/AddMoney";
 
 
 function App() {
@@ -16,9 +19,12 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route path="/" element={<Footer />} />
           <Route index element={<Home />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/user-bookings" element={<UserBookings />} />
+          <Route path="/user-houses" element={<Userhouse />} />
+          <Route path="/add-house" element={<AddHouse />} />
+          <Route path="/deposit-money" element={<AddMoney />} />
           <Route path="/browse" element={<Browse />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
