@@ -14,6 +14,8 @@ export async function removeBookingRequest(bookingId) {
             headers: { Authorization: `Bearer ${token}` },
             withCredentials: true,
         });
+
+        return;
     } catch (err) {
         throw err;
     }

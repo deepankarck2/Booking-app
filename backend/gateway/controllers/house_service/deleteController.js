@@ -9,6 +9,7 @@ async function removeBookingController(req, res) {
 
     try {
         await axios.delete(process.env.HOUSE_SERVICE_HOST + `/removeBooking?bookingId=${bookingId}`);
+        return res.send();
     } catch (err) {
         return res.status(getHTTPErrorCode(err)).send();
     }
@@ -21,6 +22,8 @@ async function removeHouseController(req, res) {
 
     try {
         await axios.delete(process.env.HOUSE_SERVICE_HOST + `/removeHouse?id=${houseId}`);
+        return res.send();
+
     } catch (err) {
         return res.status(getHTTPErrorCode(err)).send();
     }

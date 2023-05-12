@@ -46,7 +46,8 @@ export default function AddMoney() {
 
         try {
             await addMoneyRequest(user.id, amount);
-            console.log(`success`);
+            alert(`Successfully added $${amount} dollars`);
+            window.location.reload();
         } catch (err) {
             console.error(err);
         }

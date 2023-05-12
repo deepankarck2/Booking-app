@@ -1,10 +1,11 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { loginRequest } from "../../utils/requests/login";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 export default function Login() {
   const navigate = useNavigate();
+  const [errorMessage, setErrorMessage] = useState("");
 
   const formRefs = {
     emailRef: useRef(),
@@ -13,6 +14,8 @@ export default function Login() {
 
   async function submitHandler(e) {
     e.preventDefault();
+
+    setErrorMessage("");
 
     const email = formRefs.emailRef.current.value;
     const password = formRefs.passwordRef.current.value;
@@ -23,8 +26,9 @@ export default function Login() {
       await loginRequest(email, password);
       navigate("/dashboard");
     } catch (err) {
-      console.log(err);
-      return;
+      if (err.response.status === 500) {
+        setErrorMessage("Internal Server Error, please try again later");
+      } else setErrorMessage("Invalid email or password");
     }
   }
 
@@ -32,8 +36,8 @@ export default function Login() {
     <div>
       <div className="mt-4 grow flex items-center justify-around">
         <div className="mb-64">
+          {errorMessage !== "" && <div className="bg-orange-400 text-center text-red-600 text-xl">{errorMessage}</div>}
           <h1 className="text-4xl text-center mb-4">Login</h1>
-
           <form className="  max-w-md mx-auto" onSubmit={submitHandler}>
             <input type="email" placeholder="example@example.com" id="login-email" ref={formRefs.emailRef} />
             <input type="password" placeholder="password" id="login-password" ref={formRefs.passwordRef} />

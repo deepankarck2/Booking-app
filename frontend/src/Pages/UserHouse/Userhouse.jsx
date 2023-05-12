@@ -34,6 +34,8 @@ export default function Userhouse() {
   async function removeHouseHandler(houseId) {
     try {
       await removeHouseRequest(houseId);
+      alert("House removed successfully");
+      window.location.reload();
     } catch (err) {
       console.error(err);
     }
@@ -45,7 +47,7 @@ export default function Userhouse() {
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-      {userCreatedHouses.map((house, i) => (
+      {userCreatedHouses.length === 0 ? <div>No created house listings</div> : userCreatedHouses.map((house, i) => (
         <div key={i} className="bg-white rounded-lg shadow-md p-4">
           <h2 className="text-lg font-bold mb-2">{house.name}</h2>
           <img src={house.image} alt="house-img" className="w-full h-48 object-cover mb-2" />
