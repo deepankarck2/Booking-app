@@ -57,13 +57,13 @@ export default function AddMoney() {
         return <div>Loading...</div>
     }
 
-    return <div>
-        <h1>Deposit Money</h1>
-        <div>Current Amount: ${amount}</div>
-        <form onSubmit={submitHandler}>
-            <label>Deposit Money</label><br></br>
-            <input ref={inputRef} />
-            <button>Deposit</button>
-        </form>
-    </div>
+    return <div class="p-4">
+    <h1 class="text-2xl font-bold mb-4">Deposit Money</h1>
+    <div class="mb-4">Current Amount: ${amount}</div>
+    <form class="flex items-center" onSubmit={submitHandler}>
+        <label class="mr-2">Deposit Money</label>
+        <input class="border border-gray-300 px-2 py-1 rounded-md" ref={inputRef} />
+        <button class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md ml-2">Deposit</button>
+    </form>
+</div>
 }

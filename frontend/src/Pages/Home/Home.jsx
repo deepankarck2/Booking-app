@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom"
+import Footer from "../../Components/Footer/Footer";
 // import logo from "../Home/Images/airbnb-banner.jpeg"
 
 
@@ -12,7 +13,7 @@ export default function Home() {
                     <div className="text-center">
                         <h1 className="text-white text-2xl font-semibold uppercase md:text-3xl">Book your first house..</h1>
                         <button
-                            className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full"
+                            className="bg-red-500 mt-3 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full"
                             onClick={() => navigate("/browse")}
                         >
                             Browse
@@ -20,7 +21,7 @@ export default function Home() {
                     </div>
                 </div>
             </div>
-
+        <Footer/>
         </div>
 
     );
