@@ -8,7 +8,6 @@ from webdriver_manager.chrome import ChromeDriverManager
 from credentials import email, password
 
 class LoginAndAddHouseTest(unittest.TestCase):
-
     def setUp(self):
         self.driver = webdriver.Chrome(executable_path=ChromeDriverManager().install())
         self.driver.get("http://localhost:3000/login")
