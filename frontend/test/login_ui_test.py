@@ -5,6 +5,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
+from credentials import email, password
 
 class LoginUITest(unittest.TestCase):
 
@@ -18,8 +19,8 @@ class LoginUITest(unittest.TestCase):
         email_input = driver.find_element(By.ID,"login-email")
         password_input = driver.find_element(By.ID, "login-password")
 
-        email_input.send_keys("testuserr8@email.com")
-        password_input.send_keys("testuserr8")
+        email_input.send_keys(email)
+        password_input.send_keys(password)
 
         submit_button = driver.find_element(By.ID, "login-submit")
         submit_button.click()
