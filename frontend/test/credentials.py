@@ -1,4 +1,4 @@
 # credentials.py
-username = "ATestUser"
-email = "ATestUser@email.com"
-password = "ATestUser"
+username = "ATestUser482"
+email = "ATestUserj48@email.com"
+password = "ATestUser482"
