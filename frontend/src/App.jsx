@@ -28,8 +28,8 @@ function App() {
           <Route path="/browse" element={<Browse />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-
-        </Route>
+          
+        </Route> 
 
       </Routes>
 
