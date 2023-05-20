@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState, useRef } from "react"
-import { authRequest } from "../../../utils/requests/auth";
+import { authRequest } from "../../utils/requests/auth";
 import { useNavigate } from "react-router-dom";
-import { UserContext } from "../../../Context/UserContext";
-import { addHouseRequest } from "../../../utils/requests/addHouse";
+import { UserContext } from "../../Context/UserContext";
+import { addHouseRequest } from "../../utils/requests/addHouse";
 
 export default function AddHouse(props) {
   const navigate = useNavigate();
@@ -162,13 +162,13 @@ export default function AddHouse(props) {
 
 
         <label>Price</label><br></br>
-        <input type="number" ref={formRefs.priceRef} className="border border-gray-300 rounded-md px-4 py-2 mt-2 focus:outline-none focus:border-black" />
+        <input id="price-input" type="number" ref={formRefs.priceRef} className="border border-gray-300 rounded-md px-4 py-2 mt-2 focus:outline-none focus:border-black" />
 
       </div>
-      <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+      <button id="addHouse-submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
         Submit
       </button>
-      <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={() => props.setDashboardPages(0)}>
+      <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={() => navigate("/dashboard")}>
         Go Back
       </button>
     </form>

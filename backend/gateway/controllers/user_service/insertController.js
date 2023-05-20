@@ -18,6 +18,24 @@ async function registerController(req, res) {
     }
 }
 
+async function addMoneyController(req, res) {
+    const amount = req.body.amount;
+    const userId = req.body.userId;
+
+    if (!amount || !userId) return res.status(400).send();
+
+    try {
+        await axios.post(process.env.USER_SERVICE_HOST + "/addMoney", {
+            amount, userId
+        });
+
+        return res.send();
+    } catch (err) {
+        return res.status(getHTTPErrorCode(err)).send();
+    }
+}
+
 module.exports = {
     registerController,
+    addMoneyController,
 }

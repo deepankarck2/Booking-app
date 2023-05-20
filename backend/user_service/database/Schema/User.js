@@ -15,6 +15,11 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+
+    money: {
+        type: Number,
+        required: true,
+    }
 });
 
 module.exports = {

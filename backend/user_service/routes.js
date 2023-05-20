@@ -18,4 +18,7 @@ router.post("/auth", controllers.authController);
 router.put("/addRefreshToken", controllers.addRefreshTokenController);
 router.post("/removeRefreshToken", controllers.removeRefreshTokenController);
 
+router.post("/addMoney", controllers.addMoneyController);
+router.get("/getMoney", controllers.getMoneyController);
+
 module.exports = router;

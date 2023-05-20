@@ -4,7 +4,7 @@ import { UserContext } from "../../Context/UserContext";
 import { authRequest } from "../../utils/requests/auth";
 import House from "./components/House";
 import Modal from "./components/Modal";
-
+import Footer from "../../Components/Footer/Footer";
 export default function Browse() {
     const [houses, setHouses] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -48,10 +48,16 @@ export default function Browse() {
         return <Modal setBookingMode={setBookingMode} house={selectedHouse} user={user} />
     }
 
-    return <div>
-        <h1>Browse</h1>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {houses.map((house) => <House house={house} user={user} key={house._id} bookHandler={bookHandler} />)}
+    return (
+        <div className="mt-16">
+          <h1>Browse</h1>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            {houses.map((house) => (
+              <House house={house} user={user} key={house._id} bookHandler={bookHandler} />
+            ))}
+          </div>
         </div>
-    </div>
+      );
+      
+      
 }
